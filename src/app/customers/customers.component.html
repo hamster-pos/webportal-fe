@@ -1,0 +1,174 @@
+<!-- 
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="card card-plain">
+          <div class="card-header card-header-danger">
+              <h4 class="card-title">Material Design Icons</h4>
+              <p class="card-category">Handcrafted by our friends from
+                  <a target="_blank" href="https://design.google.com/icons/">Google</a>
+              </p>
+          </div>
+          <div class="row">
+              <div class="col-md-12">
+                  <div class="card-body">
+                      <div class="iframe-container d-none d-lg-block">
+                          <iframe src="https://design.google.com/icons/">
+                              <p>Your browser does not support iframes.</p>
+                          </iframe>
+                      </div>
+                      <div class="col-md-12 d-none d-sm-block d-md-block d-lg-none d-block d-sm-none text-center ml-auto mr-auto">
+                          <h5>The icons are visible on Desktop mode inside an iframe. Since the iframe is not working on Mobile and Tablets please visit the icons on their original page on Google. Check the
+                              <a href="https://design.google.com/icons/" target="_blank">Material Icons</a>
+                          </h5>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div> -->
+
+
+
+
+
+
+
+
+
+<!-- Copyright 2019 Google Inc. All Rights Reserved.
+      Use of this source code is governed by an MIT-style license that
+      can be found in the LICENSE file at http://angular.io/license -->
+
+
+
+
+
+
+
+
+
+
+<div class="main-content">
+  <div>
+          <div class="input-group no-border">
+              <input #todo type="text" value="" name="todo" class="form-control" placeholder="Search...">
+              <button mat-raised-button type="submit" class="btn btn-white btn-round btn-just-icon">
+                  <i class="material-icons" (click) = "searchCustomer(todo.value)">search</i>
+                  <div class="ripple-container"></div>
+              </button>
+          </div>
+  </div>
+  <div class="container-fluid">
+    <mat-table class="table-margin-bottom" #table [dataSource]="dataSource">
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <mat-form-field floatLabel="{{ row.editing ? 'float' : 'never'}}">
+            <input matInput [formControl]="row.validator.controls['id']" [readonly]="!row.editing" placeholder=""
+              [(ngModel)]="row.currentData.id">
+          </mat-form-field>
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="firstName">
+        <mat-header-cell *matHeaderCellDef> First Name </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <mat-form-field floatLabel="{{ row.editing ? 'float' : 'never'}}">
+            <input matInput [formControl]="row.validator.controls['firstName']" [readonly]="!row.editing" placeholder=""
+              [(ngModel)]="row.currentData.firstName">
+          </mat-form-field>
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="lastName">
+        <mat-header-cell *matHeaderCellDef> Last Name </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <mat-form-field floatLabel="{{ row.editing ? 'float' : 'never'}}">
+            <input matInput [formControl]="row.validator.controls['lastName']" [readonly]="!row.editing" placeholder=""
+              [(ngModel)]="row.currentData.lastName">
+          </mat-form-field>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="phoneNumber">
+        <mat-header-cell *matHeaderCellDef> Phone Number </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <mat-form-field floatLabel="{{ row.editing ? 'float' : 'never'}}">
+            <input matInput [formControl]="row.validator.controls['phoneNumber']" [readonly]="!row.editing"
+              placeholder="" [(ngModel)]="row.currentData.phoneNumber">
+          </mat-form-field>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="address">
+        <mat-header-cell *matHeaderCellDef> Address </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <mat-form-field floatLabel="{{ row.editing ? 'float' : 'never'}}">
+            <input matInput [formControl]="row.validator.controls['address']" [readonly]="!row.editing" placeholder=""
+              [(ngModel)]="row.currentData.address">
+          </mat-form-field>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="shopName">
+        <mat-header-cell *matHeaderCellDef> Shop Name </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <mat-form-field floatLabel="{{ row.editing ? 'float' : 'never'}}">
+            <input matInput [formControl]="row.validator.controls['shopName']" [readonly]="!row.editing" placeholder=""
+              [(ngModel)]="row.currentData.shopName">
+          </mat-form-field>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="emailAddress">
+        <mat-header-cell *matHeaderCellDef> Email Address </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <mat-form-field floatLabel="{{ row.editing ? 'float' : 'never'}}">
+            <input matInput [formControl]="row.validator.controls['emailAddress']" [readonly]="!row.editing"
+              placeholder="" [(ngModel)]="row.currentData.emailAddress">
+          </mat-form-field>
+          <mat-error style="color:blue" *ngIf="true">test</mat-error>
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="status">
+        <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <mat-form-field floatLabel="{{ row.editing ? 'float' : 'never'}}">
+            <input matInput [formControl]="row.validator.controls['status']" [readonly]="!row.editing" placeholder=""
+              [(ngModel)]="row.currentData.status">
+          </mat-form-field>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="actionsColumn">
+          <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef>
+          <!-- <button mat-icon-button color="accent" (click)="dataSource.createNew()"><i class="fa fa-plus mat-icon"></i></button> -->
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <button *ngIf="true" mat-raised-button style="padding: 0;line-height: 26px;font-size: 12px;" color="primary" focusable="false"
+            (click)="generateLicenseDetailsForCustomer(row.currentData.id)">
+            ASSIGN
+          </button>
+          <button *ngIf="!row.editing" mat-icon-button color="primary" focusable="false" style="padding-left: 16px;"
+            (click)="editRowAction(row) && row.startEdit()">
+            <i class="fa fa-pencil mat-icon"></i>
+          </button>
+          <button *ngIf="row.editing" mat-icon-button color="primary" focusable="false"
+            (click)="row.confirmEditCreate() && editCustomer(row) ">
+            <i class="fa fa-check mat-icon"></i>
+          </button>
+          <button *ngIf="!row.editing" mat-icon-button color="primary" focusable="false"
+            (click)="deleteCustomer(row.currentData.id) && row.cancelOrDelete();">
+            <i class="fa fa-trash mat-icon"></i>
+          </button>
+          <button *ngIf="row.editing" mat-icon-button color="primary" focusable="false" (click)="row.cancelOrDelete()">
+            <i class="fa fa-times mat-icon"></i>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </div>
+</div>
