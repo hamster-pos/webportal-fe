@@ -9,7 +9,8 @@ export class LicenceValidatorService implements ValidatorService {
       'id':new FormControl(),
       'code':new FormControl(),
       'license_key':new FormControl(),
-      'status':new FormControl()
+      'status':new FormControl(),
+      'validity': new FormControl()
       //'name': new FormControl(null, Validators.required),
 
       });

@@ -50,6 +50,16 @@
         </mat-cell>
       </ng-container> 
 
+      <ng-container matColumnDef="validity">
+        <mat-header-cell *matHeaderCellDef> No. Of Days </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <mat-form-field floatLabel="{{ row.editing ? 'float' : 'never'}}">
+            <input matInput [formControl]="row.validator.controls['validity']" [readonly]="!row.editing" placeholder=""
+              [(ngModel)]="row.currentData.validity">
+          </mat-form-field>
+        </mat-cell>
+      </ng-container> 
+
       <!-- <ng-container matColumnDef="actionsColumn">
           <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
         <mat-header-cell *matHeaderCellDef>

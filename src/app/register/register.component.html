@@ -4,11 +4,11 @@
       <img id="profile-img" class="profile-img-card" src="data:image/png;base64,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" />
       <p style="text-align: center">Customer Registration</p>
       <div>
-      <p *ngIf = "!true" style="text-align: center">Customer Registration</p>
+      <p *ngIf = "created" style="text-align: center;color:green">Customer Registered Successfully</p>
       </div>
-      <div *ngIf="created" class="invalid-feedback">
-          <div *ngIf="created" style="text-align: center; color:green">Customer Registration is Completed</div>
-      </div>
+      <!-- <div *ngIf="true" class="invalid-feedback">
+          <div *ngIf="true" style="text-align: center; color:green">Customer Registration is Completed</div>
+      </div> -->
       <p id="profile-name" class="profile-name-card"></p>
       <form class="form-register" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
           <div class="form-group">
@@ -59,6 +59,7 @@
               <button class="btn btn-lg btn-primary btn-block btn-signin" style="background-color:rgb(12, 97, 33); color:white" type="submit">Sign in</button>
               <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
           </div>
+          <button></button>
       </form>
   </div>
 </div>

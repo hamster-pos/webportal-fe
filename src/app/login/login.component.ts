@@ -50,14 +50,15 @@ export class LoginComponent {
                 res => {
                     let body : any;
                     body = res;
-                    console.log('login pass' + JSON.stringify(res));
                     this.failed = false;
                     if (res && body.body) {
+                        console.log(body.body);
+                        localStorage.setItem('currentUser', JSON.stringify(body.body));
                         if (body.body.temporaryPassword) {
                             console.log(body.body.id);
                             this.router.navigate(['/resetpassword',body.body.id]);
                         } else {
-                            this.router.navigate(['/dashboard']);
+                            this.router.navigate(['/customers']);
                         }
                     }
                 },

@@ -145,7 +145,7 @@
           <!-- <button mat-icon-button color="accent" (click)="dataSource.createNew()"><i class="fa fa-plus mat-icon"></i></button> -->
         </mat-header-cell>
         <mat-cell *matCellDef="let row">
-          <button *ngIf="true" mat-raised-button style="padding: 0;line-height: 26px;font-size: 12px;" color="primary" focusable="false"
+          <button *ngIf="row.currentData.status == 'PENDING'" mat-raised-button style="padding: 0;line-height: 26px;font-size: 12px;" color="primary" focusable="false"
             (click)="generateLicenseDetailsForCustomer(row.currentData.id)">
             ASSIGN
           </button>

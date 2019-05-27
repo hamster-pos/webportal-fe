@@ -1,6 +1,6 @@
 import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { TableDataSource, ValidatorService } from 'angular4-material-table';
-import { Person } from './person';
+import { Licence } from './licence';
 import { HttpClient } from '@angular/common/http';
 import { constants } from 'app/constants';
 import { Router } from '@angular/router';
@@ -34,29 +34,29 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class LicencesComponent implements OnInit {
 
-  personList: any = [];
+  licenceList: any = [];
   editRow: boolean = false;
 
   constructor(private licenceValidator: LicenceValidatorService, private http: HttpClient, private router: Router) { }
 
  // displayedColumns = ['id', 'firstName', 'lastName', 'phoneNumber', 'address', 'shopName', 'emailAddress', 'status', 'actionsColumn'];
-  displayedColumns = ['id', 'code', 'license_key', 'status'];
+  displayedColumns = ['id', 'code', 'license_key', 'status', 'validity'];
 
-  @Output() personListChange = new EventEmitter<Person[]>();
+  @Output() licenceListChange = new EventEmitter<Licence[]>();
 
-  dataSource: TableDataSource<Person>;
+  dataSource: TableDataSource<Licence>;
 
   initializeCustomers() {
     this.http.get(constants.baseURL + '/admin/licences')
       .subscribe(
         res => {
-          this.personList = [];
+          this.licenceList = [];
           if (res) {
-            this.personList = res;
-            //console.log(JSON.stringify(this.personList));
+            this.licenceList = res;
+            //console.log(JSON.stringify(this.licenceList));
           }
-          this.dataSource = new TableDataSource<any>(this.personList, Person, this.licenceValidator);
-          this.dataSource.datasourceSubject.subscribe(personList => this.personListChange.emit(personList));
+          this.dataSource = new TableDataSource<any>(this.licenceList, Licence, this.licenceValidator);
+          this.dataSource.datasourceSubject.subscribe(licenceList => this.licenceListChange.emit(licenceList));
         },
         err => {
         }
@@ -65,7 +65,7 @@ export class LicencesComponent implements OnInit {
 
   ngOnInit() {
     console.log('arrayData.map is not a function');
-    this.personList = [];
+    this.licenceList = [];
     this.initializeCustomers();
   }
 
@@ -75,18 +75,18 @@ export class LicencesComponent implements OnInit {
       this.http.get(constants.baseURL + '/customer/licenses/filter/' + value, { observe: 'response' })
         .subscribe(
           res => {
-            this.personList = [];
+            this.licenceList = [];
             if (res.status == 200 && res.body) {
-              this.personList = res.body;
-              console.log(JSON.stringify(this.personList));
+              this.licenceList = res.body;
+              console.log(JSON.stringify(this.licenceList));
             }
-            this.dataSource = new TableDataSource<any>(this.personList, Person, this.licenceValidator);
-            this.dataSource.datasourceSubject.subscribe(personList => this.personListChange.emit(personList));
+            this.dataSource = new TableDataSource<any>(this.licenceList, Licence, this.licenceValidator);
+            this.dataSource.datasourceSubject.subscribe(licenceList => this.licenceListChange.emit(licenceList));
           },
           err => {
-            this.personList = [];
-            this.dataSource = new TableDataSource<any>(this.personList, Person, this.licenceValidator);
-            this.dataSource.datasourceSubject.subscribe(personList => this.personListChange.emit(personList));
+            this.licenceList = [];
+            this.dataSource = new TableDataSource<any>(this.licenceList, Licence, this.licenceValidator);
+            this.dataSource.datasourceSubject.subscribe(licenceList => this.licenceListChange.emit(licenceList));
             console.log('error');
           }
         );

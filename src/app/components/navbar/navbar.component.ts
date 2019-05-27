@@ -34,6 +34,11 @@ export class NavbarComponent implements OnInit {
      });
     }
 
+
+    logout(){
+        localStorage.clear();
+    }
+
     sidebarOpen() {
         const toggleButton = this.toggleButton;
         const body = document.getElementsByTagName('body')[0];

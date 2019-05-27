@@ -136,6 +136,7 @@ export class CustomersComponent {
         res => {
           if (res.status === 200) {
             console.log('data updated successfully');
+            this.ngOnInit();
           }
         },
         err => {

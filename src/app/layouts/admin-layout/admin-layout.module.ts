@@ -36,6 +36,8 @@ import { PersonValidatorService } from 'app/customers/person-validator.service';
 import { HttpClientModule } from '@angular/common/http';
 import { LicencesComponent } from 'app/licences/licences.component';
 import { LicenceValidatorService } from 'app/licences/licence-validator.service';
+import { AuthGuardService } from 'app/auth/auth-guard.service';
+import { AuthService } from 'app/auth/auth.service';
 @NgModule({
   imports: [
     CommonModule,
@@ -75,7 +77,9 @@ import { LicenceValidatorService } from 'app/licences/licence-validator.service'
   ],
   providers: [
     {provide: ValidatorService, useClass: PersonValidatorService },
-    {provide: LicenceValidatorService, useClass: LicenceValidatorService }
+    {provide: LicenceValidatorService, useClass: LicenceValidatorService },
+    AuthGuardService,
+    AuthService
   ],
 })
 
