@@ -1,0 +1,85 @@
+<div class="main-content">
+  <div>
+    <div class="input-group no-border">
+        <input #userid type="text" value="" name="userid" class="form-control" placeholder="Search...">
+        <button mat-raised-button type="submit" class="btn btn-white btn-round btn-just-icon">
+            <i class="material-icons" (click) = "searchLicences(userid.value)">search</i>
+            <div class="ripple-container"></div>
+        </button>
+    </div>
+</div>
+  <div class="container-fluid">
+    <mat-table class="table-margin-bottom" #table [dataSource]="dataSource">
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <mat-form-field floatLabel="{{ row.editing ? 'float' : 'never'}}">
+            <input matInput [formControl]="row.validator.controls['id']" [readonly]="!row.editing" placeholder=""
+              [(ngModel)]="row.currentData.id">
+          </mat-form-field>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="code">
+        <mat-header-cell *matHeaderCellDef> Code </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <mat-form-field floatLabel="{{ row.editing ? 'float' : 'never'}}">
+            <input matInput [formControl]="row.validator.controls['code']" [readonly]="!row.editing" placeholder=""
+              [(ngModel)]="row.currentData.code">
+          </mat-form-field>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="license_key">
+        <mat-header-cell *matHeaderCellDef> License Key </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <mat-form-field floatLabel="{{ row.editing ? 'float' : 'never'}}">
+            <input matInput [formControl]="row.validator.controls['license_key']" [readonly]="!row.editing" placeholder=""
+              [(ngModel)]="row.currentData.license_key">
+          </mat-form-field>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <mat-form-field floatLabel="{{ row.editing ? 'float' : 'never'}}">
+            <input matInput [formControl]="row.validator.controls['status']" [readonly]="!row.editing" placeholder=""
+              [(ngModel)]="row.currentData.status">
+          </mat-form-field>
+        </mat-cell>
+      </ng-container> 
+
+      <!-- <ng-container matColumnDef="actionsColumn">
+          <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef>
+           <button mat-icon-button color="accent" (click)="dataSource.createNew()"><i class="fa fa-plus mat-icon"></i></button> 
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <button *ngIf="true" mat-raised-button style="padding: 0;line-height: 26px;font-size: 12px;" color="primary" focusable="false"
+            (click)="generateLicenseDetailsForCustomer(row.currentData.id)">
+            ASSIGN
+          </button>
+          <button *ngIf="!row.editing" mat-icon-button color="primary" focusable="false" style="padding-left: 16px;"
+            (click)="editRowAction(row) && row.startEdit()">
+            <i class="fa fa-pencil mat-icon"></i>
+          </button>
+          <button *ngIf="row.editing" mat-icon-button color="primary" focusable="false"
+            (click)="row.confirmEditCreate() && editCustomer(row) ">
+            <i class="fa fa-check mat-icon"></i>
+          </button>
+          <button *ngIf="!row.editing" mat-icon-button color="primary" focusable="false"
+            (click)="deleteCustomer(row.currentData.id) && row.cancelOrDelete();">
+            <i class="fa fa-trash mat-icon"></i>
+          </button>
+          <button *ngIf="row.editing" mat-icon-button color="primary" focusable="false" (click)="row.cancelOrDelete()">
+            <i class="fa fa-times mat-icon"></i>
+          </button>
+        </mat-cell>
+      </ng-container> -->
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </div>
+</div>

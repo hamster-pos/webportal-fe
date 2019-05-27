@@ -34,6 +34,8 @@ import {
 import { ValidatorService } from 'angular4-material-table';
 import { PersonValidatorService } from 'app/customers/person-validator.service';
 import { HttpClientModule } from '@angular/common/http';
+import { LicencesComponent } from 'app/licences/licences.component';
+import { LicenceValidatorService } from 'app/licences/licence-validator.service';
 @NgModule({
   imports: [
     CommonModule,
@@ -66,12 +68,14 @@ import { HttpClientModule } from '@angular/common/http';
     TableListComponent,
     TypographyComponent,
     CustomersComponent,
+    LicencesComponent,
     MapsComponent,
     NotificationsComponent,
     UpgradeComponent,
   ],
   providers: [
-    {provide: ValidatorService, useClass: PersonValidatorService }
+    {provide: ValidatorService, useClass: PersonValidatorService },
+    {provide: LicenceValidatorService, useClass: LicenceValidatorService }
   ],
 })
 

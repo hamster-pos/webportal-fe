@@ -8,6 +8,7 @@ import { CustomersComponent } from '../../customers/customers.component';
 import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
+import { LicencesComponent } from 'app/licences/licences.component';
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -57,6 +58,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'table-list',     component: TableListComponent },
     { path: 'typography',     component: TypographyComponent },
     { path: 'customers',      component: CustomersComponent },
+    { path: 'licences',      component: LicencesComponent },
     { path: 'maps',           component: MapsComponent },
     { path: 'notifications',  component: NotificationsComponent },
     { path: 'upgrade',        component: UpgradeComponent },
