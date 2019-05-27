@@ -40,7 +40,7 @@ export class LicencesComponent implements OnInit {
   constructor(private licenceValidator: LicenceValidatorService, private http: HttpClient, private router: Router) { }
 
  // displayedColumns = ['id', 'firstName', 'lastName', 'phoneNumber', 'address', 'shopName', 'emailAddress', 'status', 'actionsColumn'];
-  displayedColumns = ['id', 'code', 'license_key', 'status', 'validity'];
+  displayedColumns = ['id', 'code', 'license_key', 'status', 'validity','actionsColumn'];
 
   @Output() licenceListChange = new EventEmitter<Licence[]>();
 
@@ -149,6 +149,21 @@ export class LicencesComponent implements OnInit {
           console.log("err" + JSON.stringify(err));
         }
       );
+  }
+
+  copyToClipBoard(inputElement){
+    console.log(inputElement);
+    let selBox = document.createElement('textarea');
+    selBox.style.position = 'fixed';
+    selBox.style.left = '0';
+    selBox.style.top = '0';
+    selBox.style.opacity = '0';
+    selBox.value = inputElement;
+    document.body.appendChild(selBox);
+    selBox.focus();
+    selBox.select();
+    document.execCommand('copy');
+    document.body.removeChild(selBox);
   }
 
 }
