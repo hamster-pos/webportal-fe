@@ -31,6 +31,7 @@ import { LicencesComponent } from './licences/licences.component';
 import { AuthGuardService } from './auth/auth-guard.service';
 import { AuthService } from './auth/auth.service';
 
+
 @NgModule({
   imports: [
     BrowserAnimationsModule,

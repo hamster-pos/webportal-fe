@@ -33,11 +33,12 @@ import {
 } from '@angular/material';
 import { ValidatorService } from 'angular4-material-table';
 import { PersonValidatorService } from 'app/customers/person-validator.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LicencesComponent } from 'app/licences/licences.component';
 import { LicenceValidatorService } from 'app/licences/licence-validator.service';
 import { AuthGuardService } from 'app/auth/auth-guard.service';
 import { AuthService } from 'app/auth/auth.service';
+import { TokenInterceptor } from 'app/auth/token.interceptor';
 @NgModule({
   imports: [
     CommonModule,
@@ -79,7 +80,12 @@ import { AuthService } from 'app/auth/auth.service';
     {provide: ValidatorService, useClass: PersonValidatorService },
     {provide: LicenceValidatorService, useClass: LicenceValidatorService },
     AuthGuardService,
-    AuthService
+    AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
   ],
 })
 
